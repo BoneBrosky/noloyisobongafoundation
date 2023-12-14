@@ -75,7 +75,7 @@ function activeStyle2($current_page_slug, $NestedPageObjects)
                             </svg>
                         </span>
                         <h1 class="text-[#fdb515] group-hover:text-[#08784a] font-bold py-5 text-xl uppercase"><?php echo getLinkedPages($NestedPageObjects)["title"] ?></h1>
-                        <a href="/<?php echo getLinkedPages($NestedPageObjects)["guid"] ?>">
+                        <a href="<?php echo site_url(strtolower(getLinkedPages($NestedPageObjects)["title"])) ?>">
                             <button class="bg-[#fdb515] group-hover:bg-[#08784a] text-[#08784a] group-hover:text-[#fdb515]  m-2 mt-6 mx-auto flex gap-2 items-center w-auto drop-shadow-2xl py-2 px-16 rounded-full">Read more
                                 <span class="fill-[#08784a] group-hover:fill-[#fdb515] w-6 h-6 block m-auto">
                                     <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ReadMoreIcon">
@@ -97,7 +97,7 @@ function activeStyle2($current_page_slug, $NestedPageObjects)
                             </svg>
                         </span>
                         <h1 class="text-[#08784a] group-hover:text-[#fdb515] font-bold py-5 text-xl uppercase"><?php echo getLinkedPages($NestedPageObjects)["title2"] ?></h1>
-                        <a href="<?php echo '/' . getLinkedPages($NestedPageObjects)["guid2"] ?>">
+                        <a href="<?php echo site_url(strtolower(getLinkedPages($NestedPageObjects)["title2"])) ?>">
                             <button class="bg-[#08784a] group-hover:bg-[#fdb515] text-[#fdb515] fill-[#fdb515] group-hover:fill-[#08784a]  m-2 mt-6 mx-auto flex gap-2 items-center w-auto drop-shadow-2xl py-2 px-16 rounded-full">Read more
                                 <span class="w-6 h-6 block m-auto">
                                     <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ReadMoreIcon">

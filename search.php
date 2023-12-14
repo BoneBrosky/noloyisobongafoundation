@@ -32,7 +32,7 @@ global $post;
                                 <a href="<?php the_permalink() ?>">
                                     <h1 class="text-lg lg:text-3xl text-left font-bold group-odd:text-[#08784a] group-odd:hover:text-[#fdb515] group-even:text-[#fdb515] group-even:hover:text-[#08784a]"><?php the_title() ?></h1>
                                 </a>
-                                <span class='italic pb-5 text-slate-500 text-xs'>by <b><?php the_author() ?></b> <b class="group-odd:text-[#fdb515] group-even:text-[#08784a]">•</b> <?php the_modified_date() ?></span>
+                                <span class='italic pb-5 text-slate-500 text-xs'>by <b><?php the_author() ?></b> <b class="group-odd:text-[#fdb515] group-even:text-[#08784a]">•</b> pulished on <b><?php the_time('d.m.y') ?></b></span>
                             </div>
                         </div>
                         <hr class="border-[#fdb515] group-last-of-type:hidden border-1 mt-5 w-auto">
