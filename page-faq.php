@@ -10,15 +10,13 @@ global $post;
 $current_page = $post;
 
 $args = array(
-    'post_type' => 'faqs',
-    'per_page' => 10
+    'post_type' => 'page',
+    'posts_per_page' => -1
 );
 
 $posts = new WP_Query($args);
 
 wp_reset_query();
-
-$custom_image = wp_get_attachment_url($current_page->ID);
 
 
 ?>

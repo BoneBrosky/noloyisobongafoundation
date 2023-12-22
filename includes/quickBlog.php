@@ -40,7 +40,7 @@ wp_reset_query();
 
         ?>
     </div>
-    <a href="/blog">
+    <a href="<?php echo site_url('/blog') ?>">
         <button class="flex gap-2 items-center bg-[#fdb515] drop-shadow-2xl hover:bg-[#08784a] m-2 mt-6 mx-auto w-auto text-white py-2 px-16 rounded-full">Read more
             <span class=" w-6 h-6 block m-auto">
                 <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv fill-white" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ReadMoreIcon">
