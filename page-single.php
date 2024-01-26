@@ -11,7 +11,7 @@ get_header(); ?>
         while (have_posts()) {
             the_post(); ?>
 
-            <main class="flex flex-col relative h-[200px] lg:h-[300px] border-b-4 border-[#fdb515] overflow-hidden" style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id()); ?>); background-attachment: fixed; background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <main class="flex flex-col relative h-[200px] lg:h-[300px] border-b-4 border-[#fdb515] overflow-hidden" style="background-image: url(<?php echo the_post_thumbnail_url('bannerSingle'); ?>);">
                 <div class="bg-[#08784a] py-auto lg:px-[30px] bg-opacity-25 lg:bg-opacity-50 h-full m-auto w-full m-0 absolute right-0 flex items-center">
                     <div class="w-full text-right  p-5 lg:pl-0 lg:pr-10">
                         <h1 class="text-white text-center  font-bold text-4xl"><?php the_title(); ?></h1>

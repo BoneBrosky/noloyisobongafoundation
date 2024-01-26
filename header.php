@@ -16,6 +16,7 @@ $image_url = wp_get_attachment_image_src($custom_logo_id, 'full')[0];
       <progress class="pure-material-progress-linear  text-[#08784a] w-full"></progress>
     </div>
   </div>
+  
   <header class="lg:flex contents flex-col sticky top-0 z-10 lg:w-full border-b-4 border-[#fdb515]">
     <div class="bg-[#08784a] text-center text-white h-auto w-full p-3 static z-10">
       <div class="flex w-content text-xs lg:text-base lg:w-3/5 justify-between font-bold gap-5 items-center ml-0 lg:m-auto">

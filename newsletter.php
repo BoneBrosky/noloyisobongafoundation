@@ -21,7 +21,7 @@ function newsletter()
             if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
                 // MailChimp API credentials
                 $list_id = 'a865099696';
-                $authToken = '7452acb6bb5ca019c285c4f1c7a1af9f-us9';
+                $authToken = 'b5ccacc70221f312cacddeb3f5452a74-us9';
 
                 // MailChimp API URL
                 $memberID = md5(strtolower($email));

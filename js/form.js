@@ -31,7 +31,7 @@ function submitForm(e) {
             progress.classList.remove('hidden')
         })
 
-        axios.post(`${urlOriginLocal}/wp-content/themes/noloyisobongafoundation/newsletter.php`, data)
+        axios.post(`${urlOrigin}/wp-content/themes/noloyisobongafoundation/newsletter.php`, data)
             .then((res) => {
                 resData = res.data
                 status = res.status
