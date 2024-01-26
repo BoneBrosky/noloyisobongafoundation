@@ -1,6 +1,0 @@
-import toggle_search from './search.js'
-import mobile_nav from './menu.js'
-import preLoader from './pre-loader.js'
-import form from './form.js'
-import projects_container from './projects.js'
-import gallery_item from './gallery-modal.js'
