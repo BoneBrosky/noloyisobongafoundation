@@ -1,5 +1,5 @@
 body {
-    background-image: url(http://localhost/nlbf/wp-content/uploads/2023/09/header.jpg);
+    background-image: url(http://localhost:10004/wp-content/uploads/2024/01/bg03.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,7 +19,7 @@ body::before {
 .login form {
     position: relative;
     border-radius: 20px;
-    background-color: #08784a;
+    background-color: #00796b;
     border: none;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.24));
 }
@@ -42,7 +42,7 @@ input[type=checkbox],
 }
 
 .login form input[type=checkbox] {
-    background-color: #fdb515;
+    background-color: #009688;
 }
 
 .login .button.wp-hide-pw .dashicons,
@@ -50,16 +50,17 @@ input[type=checkbox],
 .login #nav a,
 .login #backtoblog a:hover,
 .login #nav a:hover,
-.login h1 a:hover {
-    color: #fdb515;
+.login h1 a:hover,
+.privacy-policy-page-link a {
+    color: #fff;
     position: relative;
 }
 
 .wp-core-ui .button,
 .wp-core-ui .button-secondary {
-    color: #08784a;
-    background-color: #fdb515;
-    border-color: #08784a;
+    color: #00796b;
+    background-color: #92c694;
+    border-color: #92c694;
     border-radius: 20px;
 }
 
@@ -67,9 +68,9 @@ input[type=checkbox],
 .wp-core-ui .button-primary.hover,
 .wp-core-ui .button-primary:focus,
 .wp-core-ui .button-primary:hover {
-    background: #08784a;
-    border-color: #fdb515;
-    color: #fdb515;
+    background: transparent;
+    border-color: #92c694;
+    color: #92c694;
 }
 
 input[type=checkbox]:focus,
@@ -90,21 +91,22 @@ input[type=url]:focus,
 input[type=week]:focus,
 select:focus,
 textarea:focus {
-    border-color: #fdb515;
-    box-shadow: 0 0 0 1px #fdb515;
+    border-color: #009688;
+    box-shadow: 0 0 0 1px #009688;
     outline: 2px solid transparent;
 }
 
 .wp-core-ui select:focus {
-    border-color: #fdb515;
+    border-color: #009688;
     color: #08784a;
-    box-shadow: 0 0 0 1px #fdb515;
+    box-shadow: 0 0 0 1px #009688;
 }
 
 .login h1 a {
     all: unset !important;
     width: 125px;
     height: auto;
+    color: #fff;
 }
 
 .login h1 {
@@ -116,6 +118,12 @@ textarea:focus {
 .login .notice,
 .login .success {
     border-left: transparent;
-    background-color: #fdb515;
-    color: #08784a;
+    background-color: #92c694;
+    color: #00796b;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login form input[type=checkbox] {
+    background-color: #92c694;
 }

@@ -1,121 +1,66 @@
 let form = document.getElementsByClassName('form')
+let form_container = document.getElementsByClassName('from-container')
 let confirmNewsletter = document.getElementsByClassName('newsletter-check')
 let form_notification = document.getElementsByClassName('form-notification')
 let form_progress = document.getElementsByClassName('form-progress')
+let form_success = document.getElementsByClassName('form-success')
+let form_error = document.getElementsByClassName('form-error')
 let form_message = document.getElementsByClassName('form-message')
 let form_message_error = document.getElementsByClassName('form-message-error')
 let formButton = form
 
 //  State
-
-let consent = false
 let status
 let resData = []
 
-let urlOriginLocal = 'http://localhost/nlbf'
-let urlOrigin = 'https://noloyisobongafoundation.org'
+let urlOriginLocal = window.location.origin
 
-function submitForm(e) {
+async function submitForm(e) {
     e.preventDefault()
+
     const formDataFields = new FormData(e.srcElement.form)
 
-    if (confirmNewsletter[0] != undefined) {
-        formDataFields.append("consent", consent)
-    }
-
     const data = Object.fromEntries(formDataFields)
+    console.log('data', data)
 
     if (data.email != '' && data.name_surname != '' && data.consent != 'false') {
         Array.prototype.forEach.call(form_progress, (progress) => {
-            progress.classList.add('flex')
             progress.classList.remove('hidden')
         })
-
-        axios.post(`${urlOriginLocal}/wp-content/themes/noloyisobongafoundation/newsletter.php`, data)
+        // form_container[0].classList.toggle('opacity-0')
+        axios.post(`${urlOriginLocal}/wp-content/themes/select-few/client-quote.php`, formDataFields)
+            .then()
             .then((res) => {
                 resData = res.data
                 status = res.status
-                if (res.status == 200) {
-                    Array.prototype.forEach.call(form_notification, (notification) => {
-                        notification.classList.toggle('hidden')
-                    })
+                // form_container[0].classList.toggle('opacity-0')
+                // progress.classList.toggle('hidden')
+                form_progress[0].classList.add('hidden')
+
+                if (resData == "Message has been sent.") {
+                    form_message[0].innerHTML = `<h1 class="text-2xl text-white">${resData}</h1>`
+                    form_success[0].classList.toggle('hidden')
+
+                    let timeout = setTimeout(() => {
+                        form_success[0].classList.toggle('hidden')
+                        e.srcElement.form.reset()
+                    }, 5000);
                 } else {
-                    console.log('php response error', res.status)
+                    console.log("log", form_message)
+                    form_message[1].innerHTML = `<h1 class="text-2xl text-white">Error Please Try Again.</h1>`
+                    form_error[0].classList.toggle('hidden')
+
+                    let timeout3 = setTimeout(() => {
+                        form_error[0].classList.toggle('hidden')
+                        e.srcElement.form.reset()
+                    }, 5000);
                 }
 
-            })
-            .finally(() => {
-                if (resData.split('">')[1]?.split('.</')[0] == 'Successful') {
-                    setTimeout(() => {
-                        Array.prototype.forEach.call(form_progress, (progress) => {
-                            progress.classList.remove('flex')
-                            progress.classList.add('hidden')
-                        })
-                        Array.prototype.forEach.call(form_message, (message) => {
-                            console.log('message.children', message.children)
-                            message.classList.remove('hidden')
-                            message.classList.add('flex')
-                            message.children[1].innerHTML = resData
-                        })
-                        setTimeout(() => {
-                            Array.prototype.forEach.call(form_message, (message) => {
-                                message.classList.remove('flex')
-                                message.classList.add('hidden')
-                                message.children[1].innerHTML = ''
-                            })
-                            Array.prototype.forEach.call(form_notification, (notification) => {
-                                notification.classList.toggle('hidden')
-                            })
-                            Array.prototype.forEach.call(confirmNewsletter, (confirm) => {
-                                let value = confirm.innerHTML.trim()
 
-                                if (value == 'radio_button_checked') {
-                                    consent = false
-                                    confirm.innerHTML = 'radio_button_unchecked'
-                                } else if (value == 'radio_button_unchecked') {
-                                    consent = true
-                                    confirm.innerHTML = 'radio_button_checked'
-                                }
-                            })
-                            e.srcElement.form.reset()
-                        }, 6000);
-                    }, 4000);
-                } else {
-                    setTimeout(() => {
-                        Array.prototype.forEach.call(form_progress, (progress) => {
-                            progress.classList.remove('flex')
-                            progress.classList.add('hidden')
-                        })
-                        Array.prototype.forEach.call(form_message_error, (message) => {
-                            console.log('message.children', message.children)
-                            message.classList.remove('hidden')
-                            message.classList.add('flex')
-                            message.children[1].innerHTML = resData
-                        })
-                        setTimeout(() => {
-                            Array.prototype.forEach.call(form_message_error, (message) => {
-                                message.classList.remove('flex')
-                                message.classList.add('hidden')
-                                message.children[1].innerHTML = ''
-                            })
-                            Array.prototype.forEach.call(form_notification, (notification) => {
-                                notification.classList.toggle('hidden')
-                            })
-                            Array.prototype.forEach.call(confirmNewsletter, (confirm) => {
-                                let value = confirm.innerHTML.trim()
 
-                                if (value == 'radio_button_checked') {
-                                    consent = false
-                                    confirm.innerHTML = 'radio_button_unchecked'
-                                } else if (value == 'radio_button_unchecked') {
-                                    consent = true
-                                    confirm.innerHTML = 'radio_button_checked'
-                                }
-                            })
-                            e.srcElement.form.reset()
-                        }, 6000);
-                    }, 4000);
-                }
+                // clearTimeout(timeout)
+                // console.log('resData', resData)
+
             })
     } else if (data.email == '' && data.name_surname == '') {
         alert('email and name fields are empty')
@@ -152,8 +97,8 @@ Array.prototype.forEach.call(form, () => {
 
         if (isSubmitButton) {
             submitButton.addEventListener('click', submitForm);
-            if (confirmNewsletter[0] == undefined) return
-            confirmNewsletter[0].addEventListener('click', confirmNewsletterInput);
+            // if (confirmNewsletter[0] == undefined) return
+            // confirmNewsletter[0].addEventListener('click', confirmNewsletterInput);
         }
     })
 })

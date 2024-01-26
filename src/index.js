@@ -3,7 +3,7 @@ import ExampleReactComponent from "./scripts/ExampleReactComponent"
 import React from "react"
 import ReactDOM from "react-dom"
 
-const person1 = new Person("Bone Thug.")
+const person1 = new Person("Bone!!!")
 if (document.querySelector("#render-react-example-here")) {
   ReactDOM.render(<ExampleReactComponent />, document.querySelector("#render-react-example-here"))
 }

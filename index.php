@@ -1,47 +1,41 @@
 <?php
 
-get_header(); ?>
+global $post;
 
-<script>
-  const [first, setfirst] = useState("second")
-  console.log("Hello from first Default:", first)
-  setfirst("first")
-  console.log("Hello from first Result:", first)
-</script>
+get_header();
+$args = array(
+  'pagename' => 'home',
+  'per_page' => -1
+);
 
+$posts = new WP_Query($args);
 
-<main style="opacity: 1;">
-  <?php
-  if (have_posts()) :
-    while (have_posts()) : the_post();
-      // echo json_encode(get_post_field('post_name'))
-  ?>
+wp_reset_query();
+get_header();
 
-      <main class="flex flex-col relative h-[350px] lg:h-[425px] border-b-4 border-[#fdb515] overflow-hidden" style="background-image: url(<?php echo esc_url(get_header_image()); ?>); background-attachment: fixed; background-repeat: no-repeat; background-size: cover; background-position: center center;">
-        <div class="bg-[#08784a] py-auto lg:px-[30px] bg-opacity-25 lg:bg-opacity-50 h-full m-auto w-full lg:w-[30%] lg:pl-2 lg:pr-10 absolute right-0 flex items-center">
-          <div class="w-full text-right p-5 lg:pl-0 lg:pr-10">
-            <h1 class="text-white font-bold lg:text-2xl">SPORT HAS THE POWER TO INSPIRE. IT HAS THE POWER TO UNITE PEOPLE IN A WAY THAT LITTLE ELSE DOES. IT SPEAKS TO YOUTH IN A LANGUAGE THEY UNDERSTAND.</h1>
-            <i class="text-white text-xs lg:text-base">~ Nelson Mandela</i>
-          </div>
+?>
+<main>
+  <div class="relative h-[217px] lg:h-[566px] overflow-hidden">
+    <?php
+    if ($posts->have_posts()) :
+      while ($posts->have_posts()) : $posts->the_post();
+    ?>
+        <div class="h-screen w-full absolute top-0 left-0 z-0">
+          <!-- <img class="w-full h-full" src="<?php the_post_thumbnail_url() ?>" /> -->
+          <video width="100%" height="100%" autoplay loop muted>
+            <source src="http://localhost:10004/wp-content/uploads/2024/01/Select-Few-Logo-Anime.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
-      </main>
-
-      <main class="w-full lg:w-4/6 sm:w-full m-auto p-5">
-        <div class="lg:mb-5">
-          <?php the_content(); ?>
-        </div>
-      </main>
-  <?php
-    endwhile;
-  endif; ?>
-
-  <?php include get_theme_file_path("./includes/vision-mission.php") ?>
-
-  <?php include get_theme_file_path("./includes/donate.php") ?>
-
-  <?php include get_theme_file_path("./includes/quickBlog.php") ?>
-
-  <?php include get_theme_file_path("./includes/signupNewsletter.php") ?>
+    <?php
+      endwhile;
+      navSide();
+    endif; ?>
+  </div>
+  <?php get_template_part('./includes/what-we-do') ?>
+  <?php get_template_part('./includes/projects') ?>
+  <?php get_template_part('./includes/clients') ?>
+  <?php get_template_part('./includes/contact') ?>
 </main>
 
 <?php get_footer();
